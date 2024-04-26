@@ -1,4 +1,4 @@
-package com.dulcesyladridos.app.model;
+package com.dulcesyladridos.app.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,19 +8,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="users_has_privileges")
-public class UserHasPrivilege {
-	
+@Table(name = "categories_posts")
+public class PostCategory {
+
 	@Id
-	@Column(name="id_user_has_privilege")
+	@Column(name = "id_category_post")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	//Foreign Key
-	@Column(name="id_user")
-	private Long idUser;
-	@Column(name="id_privilege")
-	private Long idPrivilege;
-	
-	
+	@Column(unique = true)
+	private String name;
+	private String description;
 
 }

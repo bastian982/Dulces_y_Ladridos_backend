@@ -1,4 +1,4 @@
-package com.dulcesyladridos.app.model;
+package com.dulcesyladridos.app.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,14 +8,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="categories_products")
-public class ProductCategory {
+@Table(name="privilages")
+public class Privilege {
 	
 	@Id
-	@Column(name="id_category_product")
+	@Column(name = "id_privilege")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	private String description;
-
+	private String privilage;
 }

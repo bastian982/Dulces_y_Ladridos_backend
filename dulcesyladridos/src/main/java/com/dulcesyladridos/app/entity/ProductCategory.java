@@ -1,4 +1,4 @@
-package com.dulcesyladridos.app.model;
+package com.dulcesyladridos.app.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,14 +8,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categories_posts")
-public class PostCategory {
-
+@Table(name="categories_products")
+public class ProductCategory {
+	
 	@Id
-	@Column(name = "id_category_post")
+	@Column(name="id_category_product")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true)
 	private String name;
 	private String description;
 

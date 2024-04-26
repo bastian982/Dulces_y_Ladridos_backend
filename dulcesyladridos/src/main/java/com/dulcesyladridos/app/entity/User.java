@@ -1,4 +1,4 @@
-package com.dulcesyladridos.app.model;
+package com.dulcesyladridos.app.entity;
 
 import java.util.Date;
 
