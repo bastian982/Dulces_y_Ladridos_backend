@@ -3,7 +3,7 @@ package com.dulcesyladridos.app.entity;
 import java.sql.Date;
 import jakarta.persistence.*;
 
-@Entity
+	@Entity
 	@Table(name="reviews")
 	public class Review {
 		
@@ -11,49 +11,119 @@ import jakarta.persistence.*;
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
 		@Column(name = "id_review")
 		private Long id;
+		
 		@Column(name = "content")
 		private String content;
-		@Column(name = "rating")
-		private Integer rating;
-		@Column(name = "date")
-		private Date date;
-		@Column(name = "validation")
-		private Boolean validation;
-		@Column(name = "id_user")
-		private Long idUser;
 		
-		protected Review() {}
+		@Column(name = "rating", length = 150, columnDefinition = "INT", nullable = false )
+		private Integer rating;
+		
+		@Column(name = "date" , columnDefinition = "DATE", nullable = false )
+		private Date date;
+		
+		@Column(name = "validation", columnDefinition = "TINYINT", nullable = false )
+		private Boolean validation;
+		
+		// Foreign key section
+		// ------------------------------------------------------
+		@ManyToOne 
+		@JoinColumn(name = "id_user")
+		private User user;	
+		// ------------------------------------------------------
 
-		  public Review(String content, Integer ratinge, Long idUser) {
-		    this.content = content;
-		    this.rating = ratinge;
-		    this.idUser = idUser;
-		  }
-
+		// Setter y Getter section
+		// ------------------------------------------------------
 		public Long getId() {
 			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
 		}
 
 		public String getContent() {
 			return content;
 		}
 
+		public void setContent(String content) {
+			this.content = content;
+		}
+
 		public Integer getRating() {
 			return rating;
+		}
+
+		public void setRating(Integer rating) {
+			this.rating = rating;
 		}
 
 		public Date getDate() {
 			return date;
 		}
 
+		public void setDate(Date date) {
+			this.date = date;
+		}
+
 		public Boolean getValidation() {
 			return validation;
 		}
 
-		public Long getIdUser() {
-			return idUser;
+		public void setValidation(Boolean validation) {
+			this.validation = validation;
 		}
-		  
+
+		public User getUser() {
+			return user;
+		}
+
+		public void setUser(User user) {
+			this.user = user;
+		}	
+		// ------------------------------------------------------
+
+			
+		// toString section
+		// ------------------------------------------------------
+		@Override
+		public String toString() {
+			StringBuilder builder = new StringBuilder();
+			builder.append("Review [id=");
+			builder.append(id);
+			builder.append(", content=");
+			builder.append(content);
+			builder.append(", rating=");
+			builder.append(rating);
+			builder.append(", date=");
+			builder.append(date);
+			builder.append(", validation=");
+			builder.append(validation);
+			builder.append(", user=");
+			builder.append(user);
+			builder.append(", getId()=");
+			builder.append(getId());
+			builder.append(", getContent()=");
+			builder.append(getContent());
+			builder.append(", getRating()=");
+			builder.append(getRating());
+			builder.append(", getDate()=");
+			builder.append(getDate());
+			builder.append(", getValidation()=");
+			builder.append(getValidation());
+			builder.append(", getUser()=");
+			builder.append(getUser());
+			builder.append(", getClass()=");
+			builder.append(getClass());
+			builder.append(", hashCode()=");
+			builder.append(hashCode());
+			builder.append(", toString()=");
+			builder.append(super.toString());
+			builder.append("]");
+			return builder.toString();
+		}
+		// ------------------------------------------------------
+
+	
 		  
 	}
 
