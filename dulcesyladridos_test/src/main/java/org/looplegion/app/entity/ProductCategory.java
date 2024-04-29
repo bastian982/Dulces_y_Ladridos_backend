@@ -15,7 +15,6 @@ public class ProductCategory {
 	@Column(name="id_category_product")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
 
 	@Column(nullable = false,unique = true, length = 45)
 	private String name;
@@ -24,7 +23,7 @@ public class ProductCategory {
 	@Column(length = 45)
 	private String description;
 	// Foreign key section
-	// ------------------------------------------------------
+	// -----------------------------------------------------
 		
 	// ------------------------------------------------------
 		
