@@ -23,7 +23,7 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public Post createUser(Post post) {
+	public Post createPost(Post post) {
 		// TODO Auto-generated method stub
 		return null;
 	}
