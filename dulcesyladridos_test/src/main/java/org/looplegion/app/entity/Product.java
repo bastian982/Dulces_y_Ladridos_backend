@@ -30,7 +30,9 @@ public class Product {
 	@Column(name="image_URL", length = 200, nullable = false)
 	private String imageUrl;
 	
+	public Product() {
 	
+	}
 	// Foreign key section
 	// ------------------------------------------------------
 	@ManyToOne 

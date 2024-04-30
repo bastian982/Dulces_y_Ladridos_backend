@@ -18,6 +18,7 @@ public interface UserRepository extends CrudRepository< User , Long > {
 	Optional<User> findByFirstName(String firstName);
 	// SELECT * FROM users WHERE lastName = ?1
 	Optional<User> findByLastName(String lastName); 
-	
+	// Iterable<User> findAllByActive(boolean state); // SELECT * FROM users WHERE active = ?1;
+	boolean existsByEmail(String email);
 
 }
