@@ -36,9 +36,9 @@ public class Product {
 	@ManyToOne 
 	@JoinColumn(name = "id_category_product", nullable = false)
 	private ProductCategory productcategory;
-	
 	// ------------------------------------------------------
 		
+	
 	// Setter y Getter section
 	// ------------------------------------------------------
 

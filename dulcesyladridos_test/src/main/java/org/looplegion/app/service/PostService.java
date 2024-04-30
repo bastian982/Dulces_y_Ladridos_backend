@@ -11,7 +11,8 @@ public interface PostService {
 	Post getPostByTitle(String title);
 	Post createUser(Post post);
 	List<Post> getAllPostsByCategory(PostCategory postCategory);
-
+	List<Post> getAllPosts();
+	
 	Post updatePost(Post post, Long id);
 	void deletePost(Long id);
 
