@@ -7,9 +7,12 @@ import org.looplegion.app.entity.ProductCategory;
 
 public interface ProductService {
 	
+	
 	Product getProductById(Long id);
 	Product getProductByName(String name);
+	Product createProduct(Product product);
 	Product getProductByDogoName(String dogoName );
+	List<Product> getAllProducts();
 	List<Product> getAllByCategory(ProductCategory productCategory);
 	
 	Product updateProduct(Product product, Long id);
