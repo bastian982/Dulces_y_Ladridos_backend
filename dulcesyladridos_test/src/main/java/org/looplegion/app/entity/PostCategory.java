@@ -17,7 +17,7 @@ public class PostCategory {
 	private Long id;
 	@Column(nullable = false,unique = true, length = 45)
 	private String name;
-	@Column(length = 45)
+	@Column(length = 100)
 	private String description;
 
 
