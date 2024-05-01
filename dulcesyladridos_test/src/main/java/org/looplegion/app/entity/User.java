@@ -32,7 +32,8 @@ public class User {
 	@Column(name="birth_date", columnDefinition = "DATE")
 	private Date birthDate;
 
-	
+	@Column(name="is_active", columnDefinition = "TINYINT")
+	private Boolean active;
 	
 
 
