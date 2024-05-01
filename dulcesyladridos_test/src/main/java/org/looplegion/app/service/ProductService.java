@@ -13,7 +13,7 @@ public interface ProductService {
 	Product createProduct(Product product);
 	Product getProductByDogoName(String dogoName );
 	List<Product> getAllProducts();
-	List<Product> getAllByCategory(ProductCategory productCategory);
+//	List<Product> getAllByProductCategory(ProductCategory productCategory);
 	
 	Product updateProduct(Product product, Long id);
 	void deleteProduct(Long id);
