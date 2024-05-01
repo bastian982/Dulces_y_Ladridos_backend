@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService{
 			existingProduct = productOptional.get();
 			return existingProduct;
 		}else {
-			throw new IllegalStateException("User does not exist with id " + id);
+			throw new IllegalStateException("Product does not exist with id " + id);
 		}
 	}
 	
@@ -86,7 +86,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Product> getAllProducts() {
+	public List<Product> getAllProducts(boolean isActive) {
 		try {
 			List<Product> productos = (List<Product>) productRepository.findAll();
 			return productos.isEmpty() ? null : productos;
