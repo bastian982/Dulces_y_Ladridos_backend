@@ -48,21 +48,21 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public Product getProductByName(String name) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Product getProductByDogoName(String dogoName) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 
-	@Override
-	public List<Product> getAllByCategory(ProductCategory productCategory) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public List<Product> getAllByCategory(ProductCategory productCategory) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public Product updateProduct(Product product, Long id) {

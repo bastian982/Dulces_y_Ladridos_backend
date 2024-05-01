@@ -8,8 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*")//  indica que se permite el acceso a los recursos desde cualquier origen, lo que significa que la API puede ser accedida desde cualquier dominio sin restricciones de origen cruzado.
-@RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("api/v1/products")
 public class ProductController {
 	ProductService productService;
