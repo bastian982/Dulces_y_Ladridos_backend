@@ -7,10 +7,12 @@ import org.looplegion.app.entity.Product;
 import org.looplegion.app.entity.ProductCategory;
 import org.looplegion.app.repository.ProductRepository;
 import org.looplegion.app.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProductServiceImpl implements ProductService{
+	
 	
 	ProductRepository productRepository;
 	
@@ -85,9 +87,15 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			List<Product> productos = (List<Product>) productRepository.findAll();
+			return productos.isEmpty() ? null : productos;
+		}catch(Exception e)
+		{
+			throw new IllegalStateException("Error while retrieving list of products");
+		}
 	}
+
 
 
 }

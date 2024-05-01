@@ -37,7 +37,7 @@ public class Product {
 	// ------------------------------------------------------
 	@ManyToOne 
 	@JoinColumn(name = "id_category_product", nullable = false)
-	private ProductCategory productcategory;
+	private ProductCategory productCategory;
 	// ------------------------------------------------------
 		
 	
@@ -103,11 +103,11 @@ public class Product {
 	}
 
 	public ProductCategory getProductcategory() {
-		return productcategory;
+		return productCategory;
 	}
 	
 	public void setProductcategory(ProductCategory productcategory) {
-		this.productcategory = productcategory;
+		this.productCategory = productcategory;
 	}
 	// ------------------------------------------------------
 
@@ -132,7 +132,7 @@ public class Product {
 		builder.append(", imageUrl=");
 		builder.append(imageUrl);
 		builder.append(", productcategory=");
-		builder.append(productcategory);
+		builder.append(productCategory);
 		builder.append(", getId()=");
 		builder.append(getId());
 		builder.append(", getName()=");
