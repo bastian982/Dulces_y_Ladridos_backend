@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
+@RestController
 @RequestMapping("api/v1/products")
 public class ProductController {
 	ProductService productService;
@@ -23,12 +24,13 @@ public class ProductController {
 										required =false,
 										defaultValue = "true") boolean active
 					){
-		return new ResponseEntity<List<Product>>( productService.getAllProducts(), HttpStatus.OK);
+		return new ResponseEntity<List<Product>>( productService.getAllProducts( active ), HttpStatus.OK);
 	}
 	
 	@GetMapping("{id}") // localhost:8080/api/v1/products/{id}
 	ResponseEntity<Product> getProductById(@PathVariable("id") Long id ){
-		return new ResponseEntity<Product>(productService.getProductById(id) ,HttpStatus.OK );
+		return new ResponseEntity<Product>
+		(productService.getProductById(id) ,HttpStatus.OK );
 	}
 	
 	@PostMapping

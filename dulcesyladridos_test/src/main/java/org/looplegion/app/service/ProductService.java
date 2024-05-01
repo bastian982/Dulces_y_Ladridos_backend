@@ -12,7 +12,7 @@ public interface ProductService {
 	Product getProductByName(String name);
 	Product createProduct(Product product);
 	Product getProductByDogoName(String dogoName );
-	List<Product> getAllProducts();
+	List<Product> getAllProducts(boolean isActive);
 //	List<Product> getAllByProductCategory(ProductCategory productCategory);
 	
 	Product updateProduct(Product product, Long id);
