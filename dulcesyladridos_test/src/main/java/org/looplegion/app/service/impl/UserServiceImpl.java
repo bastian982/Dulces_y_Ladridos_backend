@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.looplegion.app.entity.User;
 import org.looplegion.app.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import org.looplegion.app.repository.UserRepository;
@@ -14,9 +15,13 @@ public class UserServiceImpl implements UserService {
 
 	
 	UserRepository userRepository;
+	PasswordEncoder passwordEncoder;
 	
-	public UserServiceImpl(UserRepository userRepository) {
+	public UserServiceImpl(
+			UserRepository userRepository, 
+			PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
 	}
 	
 	
