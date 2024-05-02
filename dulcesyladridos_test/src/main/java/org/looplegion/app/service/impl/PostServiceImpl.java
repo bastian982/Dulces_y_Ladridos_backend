@@ -1,19 +1,37 @@
 package org.looplegion.app.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.looplegion.app.entity.Post;
 import org.looplegion.app.entity.PostCategory;
+import org.looplegion.app.entity.Product;
+import org.looplegion.app.repository.PostRepository;
+import org.looplegion.app.repository.ProductRepository;
 import org.looplegion.app.service.PostService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PostServiceImpl implements PostService{
 
+	PostRepository postRepository;
+	
+	//Constructor
+	public PostServiceImpl(PostRepository postRepository) {
+		this.postRepository = postRepository;
+	}
+	
 	@Override
 	public Post getPostById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Post> postOptional = postRepository.findById(id);
+		Post existingPost;
+		
+		if(postOptional.isPresent()) {
+			existingPost = postOptional.get();
+			return existingPost;
+		}else {
+			throw new IllegalStateException("Post does not exist with id " + id);
+		}
 	}
 
 	@Override
@@ -24,32 +42,48 @@ public class PostServiceImpl implements PostService{
 
 	@Override
 	public Post createPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		post.setId(null);
+		
+		if(postRepository.existsByTitle(post.getTitle())) {
+			throw new IllegalStateException("Post already exists with that title" +post.getTitle());
+		}
+		
+		return postRepository.save(post);
 	}
 
-	@Override
+	/*@Override
 	public List<Post> getAllPostsByCategory(PostCategory postCategory) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
 	public Post updatePost(Post post, Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Post existingPost = getPostById(id);
+		existingPost.setTitle(post.getTitle());
+		existingPost.setDescription(post.getDescription());
+		existingPost.setContent(post.getContent());
+		existingPost.setPostcategory(post.getPostcategory());
+		return postRepository.save(existingPost);
+		
 	}
 
 	@Override
 	public void deletePost(Long id) {
-		// TODO Auto-generated method stub
+		Post existingPost = getPostById(id);
+		postRepository.delete(existingPost);
 		
 	}
 
 	@Override
 	public List<Post> getAllPosts() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			List<Post> publicaciones = (List<Post>) postRepository.findAll();
+			return publicaciones.isEmpty() ? null : publicaciones;
+		}catch(Exception e)
+		{
+			throw new IllegalStateException("Error while retrieving list of products");
+		}
 	}
 
 }

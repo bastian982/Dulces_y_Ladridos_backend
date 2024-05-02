@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.looplegion.app.entity.Product;
-import org.looplegion.app.entity.ProductCategory;
 import org.looplegion.app.repository.ProductRepository;
 import org.looplegion.app.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -10,7 +10,7 @@ public interface PostService {
 	Post getPostById(Long id);
 	Post getPostByTitle(String title);
 	Post createPost(Post post);
-	List<Post> getAllPostsByCategory(PostCategory postCategory);
+	//List<Post> getAllPostsByCategory(PostCategory postCategory);
 	List<Post> getAllPosts();
 	
 	Post updatePost(Post post, Long id);
