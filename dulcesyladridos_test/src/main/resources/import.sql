@@ -12,15 +12,15 @@ INSERT INTO categories_posts (name, description) VALUES ("Cuidado", "Post relaci
 INSERT INTO categories_posts (name, description) VALUES ("Recetas", "Post relacionados con recetas de cocina para tu perro");
 INSERT INTO categories_posts (name, description) VALUES ("Tips", "Post relacionados con tips para perros");
 
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Carlos","Chongo","961-271-4616","cacc.chongo@gmail.com","patitas1207","2000-12-07");
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Erik","Contreras","553-324-0297","casiqbp@gmail.com","patitas0806","2000-08-06");
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Frida","Estrada","556-076-2559","FridaEstrada24@gmail.com","patitas0701","2001-07-01");
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Victor","Mairena","558-826-6900","vmairenafx@gmail.com","patitas1117","1999-11-17");
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Andres","Pardo","554-540-8030","jorgeandres.pardorea@gmail.com","patitas1126","1998-11-26");
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Fernando","Cervantes","331-416-6668","fer2311cervantes@gmail.com","patitas1123","2000-11-23");
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Giss","Islas","556-147-8199","gissislas0493@gmail.com","patitas0419","2000-04-19");
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Daniela","Gomez","722-413-4818","dansmc.courses@gmail.com","patitas1218","2000-12-18");
-INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date) VALUES("Bastian","Cortés","332-493-0455","coab1998@gmail.com","patitas1002","2000-10-02");
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Carlos","Chongo","961-271-4616","cacc.chongo@gmail.com","patitas1207","2000-12-07",true,2);
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Erik","Contreras","553-324-0297","casiqbp@gmail.com","patitas0806","2000-08-06",true,3);
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Frida","Estrada","556-076-2559","FridaEstrada24@gmail.com","patitas0701","2001-07-01",true,2);
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Victor","Mairena","558-826-6900","vmairenafx@gmail.com","patitas1117","1999-11-17",true,2);
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Andres","Pardo","554-540-8030","jorgeandres.pardorea@gmail.com","patitas1126","1998-11-26",true,2);
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Fernando","Cervantes","331-416-6668","fer2311cervantes@gmail.com","patitas1123","2000-11-23",true,2);
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Giss","Islas","556-147-8199","gissislas0493@gmail.com","patitas0419","2000-04-19",true,2);
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Daniela","Gomez","722-413-4818","dansmc.courses@gmail.com","patitas1218","2000-12-18",true,2);
+INSERT INTO users(first_name,last_name,telephone_number,email,password,birth_date,is_active,id_privilege) VALUES("Bastian","Cortés","332-493-0455","coab1998@gmail.com","patitas1002","2000-10-02",true,2);
 
 INSERT INTO reviews(content, rating, date, validation, id_user) VALUES("¡Increíble sabor y presentación impecable! Nunca me decepcionan, son mi tienda favorita.", 5, "2024-03-03", 1, 1);
 INSERT INTO reviews(content, rating, date, validation, id_user) VALUES("Los postres de este ecommerce son una verdadera obra de arte. ¡Cada bocado es exquisito!", 5, "2024-03-22", 1, 2);
