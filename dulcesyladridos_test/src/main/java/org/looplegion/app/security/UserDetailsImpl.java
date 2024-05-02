@@ -23,7 +23,7 @@ private User user;
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		
 		authorities.add( 
-				new SimpleGrantedAuthority( "ROLE_" + this.user.getPrivilege() )  
+				new SimpleGrantedAuthority( "ROLE_" + this.user.getPrivilege().getPrivilege() )  
 				);
 		
 		

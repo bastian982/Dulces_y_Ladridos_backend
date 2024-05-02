@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/v1/roles")
-public class RoleController {
+@RequestMapping("api/v1/privileges")
+public class PrivilegeController {
 	
 	UserService userService;
 	
-	public RoleController(UserService userService) {
+	public PrivilegeController(UserService userService) {
 		this.userService = userService;
 	}
 	

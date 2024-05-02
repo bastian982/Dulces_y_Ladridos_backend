@@ -108,11 +108,11 @@ public class WebSecurityConfig {
 						.requestMatchers("/", "index.html", "/assets/**").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
 						.requestMatchers(HttpMethod.GET, "/api/v1/products","/api/v1/products/**").permitAll()
-						.requestMatchers("/api/v1/users", "/api/v1/roles/**").hasRole("ADMIN")
+						.requestMatchers("/api/v1/users", "/api/v1/privileges/**").hasRole("Admin")
 						.requestMatchers("/api/v1/users/**",
 										"/api/v1/purchases/**",
 										"/api/v1/order-has-products/**"
-								).hasAnyRole("ADMIN","CUSTOMER")
+								).hasAnyRole("Admin","User")
 						.anyRequest().authenticated()						
 						)
 				// STEP 7: Agregamos el filtro de autenticación del login
