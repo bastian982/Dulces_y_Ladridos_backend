@@ -110,7 +110,19 @@ public class User {
 	public void setPrivilege(Privilege privilege) {
 		this.privilege = privilege;
 	}
+	
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
 	// ------------------------------------------------------
+
+	
+
+	
 
 	// toString section
 	// ------------------------------------------------------
@@ -131,6 +143,8 @@ public class User {
 		builder.append(password);
 		builder.append(", birthDate=");
 		builder.append(birthDate);
+		builder.append(", active=");
+		builder.append(active);
 		builder.append(", privilege=");
 		builder.append(privilege);
 		builder.append(", getId()=");
@@ -149,6 +163,8 @@ public class User {
 		builder.append(getBirthDate());
 		builder.append(", getPrivilege()=");
 		builder.append(getPrivilege());
+		builder.append(", getActive()=");
+		builder.append(getActive());
 		builder.append(", getClass()=");
 		builder.append(getClass());
 		builder.append(", hashCode()=");
@@ -158,6 +174,7 @@ public class User {
 		builder.append("]");
 		return builder.toString();
 	}
+	
 	// ------------------------------------------------------
 
 
