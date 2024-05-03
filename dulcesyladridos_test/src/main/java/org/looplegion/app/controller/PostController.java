@@ -25,10 +25,10 @@ public class PostController {
 										required =false,
 										defaultValue = "true") boolean active
 					){
-		return new ResponseEntity<List<Post>>( postService.getAllPosts(), HttpStatus.OK);
+		return new ResponseEntity<List<Post>>( postService.getAllPosts(active), HttpStatus.OK);
 	}
 	
-	@PostMapping
+	@PostMapping(consumes = "application/json", produces = "application/json")
 	ResponseEntity<Post> createPost(@RequestBody Post post ){
 		Post createdPost = postService.createPost(post);
 		
