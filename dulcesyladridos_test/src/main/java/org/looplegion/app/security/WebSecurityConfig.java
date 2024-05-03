@@ -110,6 +110,8 @@ public class WebSecurityConfig {
 						.requestMatchers("/", "index.html", "/assets/**","/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
 						.requestMatchers(HttpMethod.GET, "/api/v1/products","/api/v1/products/**","/api/v1/posts","/api/v1/posts/**").permitAll()
+						.requestMatchers(HttpMethod.POST, "/api/v1/posts").hasRole("Admin")
+						.requestMatchers(HttpMethod.DELETE, "/api/v1/products/**").hasRole("Admin")
 						.requestMatchers(HttpMethod.GET, "/api/v1/privileges/**").hasRole("Admin")
 						.requestMatchers("/api/v1/users/**",
 										"/api/v1/purchases/**",

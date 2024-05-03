@@ -28,7 +28,7 @@ public class PostController {
 	    return new ResponseEntity<Post>(postService.getPostById(id), HttpStatus.OK);
 	}
 	
-	@PostMapping
+	@PostMapping(consumes = "application/json", produces = "application/json")
 	ResponseEntity<Post> createPost(@RequestBody Post post ){
 		Post createdPost = postService.createPost(post);
 		

@@ -89,7 +89,7 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public List<Post> getAllPosts() {
+	public List<Post> getAllPosts(boolean isActive) {
 		try {
 			List<Post> publicaciones = (List<Post>) postRepository.findAll();
 			return publicaciones.isEmpty() ? null : publicaciones;
