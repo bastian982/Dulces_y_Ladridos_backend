@@ -33,20 +33,20 @@ public class ProductController {
 		(productService.getProductById(id) ,HttpStatus.OK );
 	}
 	
-	@PostMapping
+	@PostMapping(consumes = "application/json", produces = "application/json")
 	ResponseEntity<Product> createProduct(@RequestBody Product product ){
 		Product createdProduct = productService.createProduct(product);
 		
 		return new ResponseEntity<Product>( createdProduct, HttpStatus.CREATED );		
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping(value="{id}", consumes = "application/json", produces = "application/json")
 	ResponseEntity<String> deleteProduct(@PathVariable("id") Long id ){
 		productService.deleteProduct(id);
 		return new ResponseEntity<String>("Product id " + id + " successfully deleted", HttpStatus.OK);
 	}
 	
-	@PutMapping("{id}")
+	@PutMapping(value="{id}", consumes = "application/json", produces = "application/json")
 	ResponseEntity<Product> updateProduct(
 			@RequestBody Product product, 
 			@PathVariable("id") Long id  

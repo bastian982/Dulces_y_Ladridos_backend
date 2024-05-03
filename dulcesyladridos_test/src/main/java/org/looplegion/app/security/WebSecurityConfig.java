@@ -23,15 +23,16 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
-* @EnableWebSecurity: habilita la configuración de seguridad web 
-*   en una aplicación Spring Boot.
-* @Configuration: contiene configuraciones para la aplicación, 
-*  como definiciones de beans y configuración de componentes, 
-*  y que debe ser considerada durante la inicialización del 
-*  contexto de la aplicación.
+* @EnableWebSecurity: habilita la configuraciï¿½n de seguridad web 
+*   en una aplicaciï¿½n Spring Boot.
+* @Configuration: contiene configuraciones para la aplicaciï¿½n, 
+*  como definiciones de beans y configuraciï¿½n de componentes, 
+*  y que debe ser considerada durante la inicializaciï¿½n del 
+*  contexto de la aplicaciï¿½n.
 *
 */
 @Configuration
@@ -39,7 +40,7 @@ import java.util.List;
 public class WebSecurityConfig {
 
 	
-	// STEP 1 Autenticación basada en usuarios en memoria
+	// STEP 1 Autenticaciï¿½n basada en usuarios en memoria
 /*	@Bean
 	UserDetailsService userDetailsService( PasswordEncoder passwordEncoder ) {
 		UserDetails sergio = User.builder()
@@ -64,10 +65,10 @@ public class WebSecurityConfig {
 	// STEP 1.1 Crear un bean de PassworsEncoder
 	/**
 	 *  Crear un bean de BCryptPasswordEncoder.
-	 *  BCrypPasswordEncoder es una implementación de PasswordEncoder proporcionada
-	 *  por Spring Security. Se utiliza para codificar y verificar contraseñas utilizando
+	 *  BCrypPasswordEncoder es una implementaciï¿½n de PasswordEncoder proporcionada
+	 *  por Spring Security. Se utiliza para codificar y verificar contraseï¿½as utilizando
 	 *  el algoritmo de hashing bcrypt.
-	 *  El algoritmo incorpora un sal aleatoria por cada contraseña, lo que agrega un capa
+	 *  El algoritmo incorpora un sal aleatoria por cada contraseï¿½a, lo que agrega un capa
 	 *  adicional de seguridad.
 	 */	
 	@Bean
@@ -88,7 +89,7 @@ public class WebSecurityConfig {
 			JWTAuthorizationFilter jwtAuthorizationFilter
 			) throws Exception {
 		
-		// STEP 7.3 Crear el objeto y la configuración para jwtAuthenticationFilter
+		// STEP 7.3 Crear el objeto y la configuraciï¿½n para jwtAuthenticationFilter
 		JWTAuthenticationFilter jwtAuthenticationFilter = new JWTAuthenticationFilter();
 		jwtAuthenticationFilter.setAuthenticationManager(  authManager );
 		jwtAuthenticationFilter.setFilterProcessesUrl("/login");
@@ -104,28 +105,29 @@ public class WebSecurityConfig {
 		// STEP 2.2 PErsonalizar la seguridad en los endpoints
 		// TODO cambiar el nombre de los endposint y roles utilizados
 		return http
+				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 				.authorizeHttpRequests( authorize -> authorize
-						.requestMatchers("/", "index.html", "/assets/**").permitAll()
+						.requestMatchers("/", "index.html", "/assets/**","/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
-						.requestMatchers(HttpMethod.GET, "/api/v1/products","/api/v1/products/**").permitAll()
-						.requestMatchers("/api/v1/users", "/api/v1/privileges/**").hasRole("Admin")
+						.requestMatchers(HttpMethod.GET, "/api/v1/products","/api/v1/products/**","/api/v1/posts","/api/v1/posts/**").permitAll()
+						.requestMatchers(HttpMethod.GET, "/api/v1/privileges/**").hasRole("Admin")
 						.requestMatchers("/api/v1/users/**",
 										"/api/v1/purchases/**",
 										"/api/v1/order-has-products/**"
 								).hasAnyRole("Admin","User")
 						.anyRequest().authenticated()						
 						)
-				// STEP 7: Agregamos el filtro de autenticación del login
-				// interceptar las solicitudes de autenticación 
+				// STEP 7: Agregamos el filtro de autenticaciï¿½n del login
+				// interceptar las solicitudes de autenticaciï¿½n 
 				// y generamos el token en la respuesta
 				.addFilter(jwtAuthenticationFilter)
 				// STEP 8: Agregamos el filtro para las demas solicitudes verificando el token JWT
 				// Interceptamos las solicitudes , extraemos y validamos el token
 				// y autenticamos al usuario
 				.addFilterBefore( jwtAuthorizationFilter  ,  UsernamePasswordAuthenticationFilter.class)				
-			    // no es necesario almacenar información de sesión en el servidor, 
-				// ya que toda la información necesaria para la autenticación 
-				// se encuentra en el token, y cada solicitud es autónoma.				 
+			    // no es necesario almacenar informaciï¿½n de sesiï¿½n en el servidor, 
+				// ya que toda la informaciï¿½n necesaria para la autenticaciï¿½n 
+				// se encuentra en el token, y cada solicitud es autï¿½noma.				 
 				.sessionManagement(managment -> managment.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.csrf( csrf-> csrf.disable() )
 				.httpBasic( withDefaults() ) 
@@ -134,14 +136,14 @@ public class WebSecurityConfig {
 	}
 	
 	
-	// STEP 3 Autenticación basada en usuarios de la DB
+	// STEP 3 Autenticaciï¿½n basada en usuarios de la DB
 	/** 
-	 *  AuthenticationManager: Gestiona las operaciones de autenticación.
+	 *  AuthenticationManager: Gestiona las operaciones de autenticaciï¿½n.
 	 *  getSharedObject: Obtiene una instancia compartida de AuthenticationManagerBuilder 
 	 *  .userDetailsService: Configura el AuthenticationManagerBuilder 
 	 *  	para utilizar un servicio de detalles de usuario personalizado.
-	 *  userDetailsService: responsable de cargar detalles específicos 
-	 *  	del usuario durante el proceso de autenticación.
+	 *  userDetailsService: responsable de cargar detalles especï¿½ficos 
+	 *  	del usuario durante el proceso de autenticaciï¿½n.
 	 */	
 	@Bean
 	AuthenticationManager authManager(
@@ -166,12 +168,14 @@ public class WebSecurityConfig {
 		@Bean
 		CorsConfigurationSource corsConfigurationSource() {
 			CorsConfiguration configuration = new CorsConfiguration();
-			configuration.setAllowedOrigins( List.of("http://127.0.0.1:5500", "https://ecommer-generica.netlify.app") );
+			configuration.setAllowedOrigins( List.of("http://localhost:8081" ) );
 			configuration.setAllowedMethods( List.of("GET", "POST", "PUT", "DELETE") );
+			configuration.setAllowedHeaders( Collections.singletonList("*"));
 			configuration.setAllowedHeaders( List.of("Authorization","Content-Type") );
+			configuration.setAllowCredentials(true);
 			
-			// Para todas las rutas en la aplicación ("/**"), 
-			// aplique la configuración CORS definida en el objeto configuration.
+			// Para todas las rutas en la aplicaciï¿½n ("/**"), 
+			// aplique la configuraciï¿½n CORS definida en el objeto configuration.
 			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 			source.registerCorsConfiguration("/**", configuration);
 			return source;
