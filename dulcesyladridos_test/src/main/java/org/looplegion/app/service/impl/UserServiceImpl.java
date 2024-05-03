@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 	public User createUser(User user) {
 		user.setActive(true);
 		user.setId(null);
-		//TODO encriptar password
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		if( userRepository.existsByEmail(user.getEmail()) ) {
 	throw new IllegalStateException("User exist with email " + user.getEmail());
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getAllActiveUsers() {
 		// TODO Auto-generated method stub
-		return null;
+		return (List<User>) userRepository.findAll();
 	}	
 
 

@@ -36,12 +36,12 @@ public class Privilege {
 		this.id = id;
 	}
 
-	public String getPrivilage() {
+	public String getPrivilege() {
 		return privilege;
 	}
 
-	public void setPrivilage(String privilage) {
-		this.privilege = privilage;
+	public void setPrivilage(String privilege) {
+		this.privilege = privilege;
 	}
 	// ------------------------------------------------------
 
@@ -53,12 +53,12 @@ public class Privilege {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Privilege [id=");
 		builder.append(id);
-		builder.append(", privilage=");
+		builder.append(", privilege=");
 		builder.append(privilege);
 		builder.append(", getId()=");
 		builder.append(getId());
-		builder.append(", getPrivilage()=");
-		builder.append(getPrivilage());
+		builder.append(", getPrivilege()=");
+		builder.append(getPrivilege());
 		builder.append(", getClass()=");
 		builder.append(getClass());
 		builder.append(", hashCode()=");

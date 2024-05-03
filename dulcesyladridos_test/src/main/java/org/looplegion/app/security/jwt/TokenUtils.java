@@ -28,7 +28,7 @@ public class TokenUtils {
 	// STEP 7.3 Creación del token JWT
 	public static String createToken(
 			String name, 
-			String email, 
+			String email,
 			Collection<? extends GrantedAuthority> authorities  ) {
 		
 		
