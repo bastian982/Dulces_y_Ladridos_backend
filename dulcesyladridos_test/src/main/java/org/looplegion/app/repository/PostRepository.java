@@ -13,7 +13,7 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 	//Encontrar un post por titulo
 	Optional<Post> findByTitle(String title);
 	
-	Iterable<Post> getAllByPostcategory(PostCategory postCategory);
+	Iterable<Post> getAllByPostcategory(PostCategory postcategory);
 
     // Verificar si un post existe por t�tulo
     boolean existsByTitle(String title);
