@@ -17,7 +17,7 @@ public class Privilege {
 	private Long id;
 	
 	@Column(name= "privilege",length=45, nullable = false)
-	private String privilage;
+	private String privilege;
 
 
 	
@@ -37,11 +37,11 @@ public class Privilege {
 	}
 
 	public String getPrivilage() {
-		return privilage;
+		return privilege;
 	}
 
 	public void setPrivilage(String privilage) {
-		this.privilage = privilage;
+		this.privilege = privilage;
 	}
 	// ------------------------------------------------------
 
@@ -54,7 +54,7 @@ public class Privilege {
 		builder.append("Privilege [id=");
 		builder.append(id);
 		builder.append(", privilage=");
-		builder.append(privilage);
+		builder.append(privilege);
 		builder.append(", getId()=");
 		builder.append(getId());
 		builder.append(", getPrivilage()=");
