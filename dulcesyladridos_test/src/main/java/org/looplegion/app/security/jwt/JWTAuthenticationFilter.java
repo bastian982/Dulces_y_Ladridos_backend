@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	// STEP 7.1 recuperar el email y password del body de la solicitud 
-		// que vendría en localhost:8080/login
+		// que vendrï¿½a en localhost:8080/login
 		@Override
 		public Authentication attemptAuthentication(
 				HttpServletRequest request, 
@@ -30,7 +30,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			
 			AuthCredentials authCredentials = new AuthCredentials();
 			
-			// asumimos que en el body de la petición viene en el formato JSON como { email, password}
+			// asumimos que en el body de la peticiï¿½n viene en el formato JSON como { email, password}
 			try {
 				authCredentials = new ObjectMapper().readValue(  request.getReader(), AuthCredentials.class  );
 				
@@ -54,7 +54,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			
 		}
 		
-		// STEP 7.2 Si la autenticación fue correcta agregamos el token a la respuesta
+		// STEP 7.2 Si la autenticaciï¿½n fue correcta agregamos el token a la respuesta
 			@Override
 			protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 					Authentication authResult) throws IOException, ServletException, java.io.IOException {
@@ -66,10 +66,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				// Opcional: crear un objeto JSON para la respuesta
 				JSONObject jsonResponse = new JSONObject();
 				jsonResponse.put("token", token);
+				jsonResponse.put("idUser", userDetails.getId());
 				
-				// Configuración de la respuesta http
+				// Configuraciï¿½n de la respuesta http
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
+				response.setStatus(200);
 				response.addHeader("Authorization", "Bearer " + token);
 				
 				// Opcional: Establecer el objeto JSON en el body de la respuesta

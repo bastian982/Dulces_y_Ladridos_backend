@@ -23,6 +23,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -104,11 +105,12 @@ public class WebSecurityConfig {
 		// STEP 2.2 PErsonalizar la seguridad en los endpoints
 		// TODO cambiar el nombre de los endposint y roles utilizados
 		return http
+				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 				.authorizeHttpRequests( authorize -> authorize
-						.requestMatchers("/", "index.html", "/assets/**").permitAll()
+						.requestMatchers("/", "index.html", "/assets/**","/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
-						.requestMatchers(HttpMethod.GET, "/api/v1/products","/api/v1/products/**").permitAll()
-						.requestMatchers("/api/v1/users", "/api/v1/privileges/**").hasRole("Admin")
+						.requestMatchers(HttpMethod.GET, "/api/v1/products","/api/v1/products/**","/api/v1/posts","/api/v1/posts/**").permitAll()
+						.requestMatchers(HttpMethod.GET, "/api/v1/privileges/**").hasRole("Admin")
 						.requestMatchers("/api/v1/users/**",
 										"/api/v1/purchases/**",
 										"/api/v1/order-has-products/**"
@@ -163,21 +165,22 @@ public class WebSecurityConfig {
 	
 	// STEP 6: opcional, configurar los CORS en caso de que no funcione 
 	// @CrossOrigin(origins = "*") en los controladores
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-	    CorsConfiguration configuration = new CorsConfiguration();
-	    configuration.setAllowedOrigins(List.of("http://127.0.0.1:5500", 
-	    		"https://ecommer-generica.netlify.app", 
-	    		"http://localhost:8081"
-	    		)); // Agregamos localhost:8081
-	    configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
-	    configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-
-	    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	    source.registerCorsConfiguration("/**", configuration);
-
-	    return source;
-	}
+		@Bean
+		CorsConfigurationSource corsConfigurationSource() {
+			CorsConfiguration configuration = new CorsConfiguration();
+			configuration.setAllowedOrigins( List.of("http://localhost:8081" ) );
+			configuration.setAllowedMethods( List.of("GET", "POST", "PUT", "DELETE") );
+			configuration.setAllowedHeaders( Collections.singletonList("*"));
+			configuration.setAllowedHeaders( List.of("Authorization","Content-Type") );
+			configuration.setAllowCredentials(true);
+			
+			// Para todas las rutas en la aplicaci�n ("/**"), 
+			// aplique la configuraci�n CORS definida en el objeto configuration.
+			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+			source.registerCorsConfiguration("/**", configuration);
+			return source;
+			
+		}
 	
 	
 }

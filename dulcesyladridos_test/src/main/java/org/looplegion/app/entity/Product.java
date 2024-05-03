@@ -36,7 +36,7 @@ public class Product {
 	// Foreign key section
 	// ------------------------------------------------------
 	@ManyToOne 
-	@JoinColumn(name = "id_category_product", nullable = false)
+	@JoinColumn(name = "id_category_product")
 	private ProductCategory productCategory;
 	// ------------------------------------------------------
 		

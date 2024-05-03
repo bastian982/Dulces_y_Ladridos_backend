@@ -3,6 +3,7 @@ package org.looplegion.app.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -59,13 +60,13 @@ public class UserController {
 		(userService.getAllUsers( active ), HttpStatus.OK);
 	}
 	
-	@GetMapping("{id}") // localhost:8080/api/v1/users/{id}
+	@GetMapping(value="{id}", produces = "application/json")
 	ResponseEntity<User> getUserById(@PathVariable("id") Long id ){
 		return new ResponseEntity<User>
 		(userService.getUserById(id) , HttpStatus.OK);
 	}
 	
-	@PostMapping
+	@PostMapping(consumes = "application/json", produces = "application/json")
 	ResponseEntity<User> createUser(@RequestBody User user){
 		User createdUser = userService.createUser(user);
 		return new ResponseEntity<User>(createdUser, HttpStatus.CREATED);
