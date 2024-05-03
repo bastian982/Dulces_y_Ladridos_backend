@@ -20,12 +20,12 @@ public class PostController {
 	}
 	
 	@GetMapping
-	ResponseEntity<List<Post>> getAllPost(
-			@RequestParam(name="active",
-										required =false,
-										defaultValue = "true") boolean active
-					){
-		return new ResponseEntity<List<Post>>( postService.getAllPosts(), HttpStatus.OK);
+	ResponseEntity<List<Post>> getAllPosts() {
+	    return new ResponseEntity<List<Post>>(postService.getAllPosts(), HttpStatus.OK);
+	}
+	@GetMapping("{id}")
+	ResponseEntity<Post> getPostById(@PathVariable("id") Long id) {
+	    return new ResponseEntity<Post>(postService.getPostById(id), HttpStatus.OK);
 	}
 	
 	@PostMapping

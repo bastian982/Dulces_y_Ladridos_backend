@@ -1,13 +1,12 @@
 package org.looplegion.app.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.looplegion.app.entity.Post;
 import org.looplegion.app.entity.PostCategory;
-import org.looplegion.app.entity.Product;
 import org.looplegion.app.repository.PostRepository;
-import org.looplegion.app.repository.ProductRepository;
 import org.looplegion.app.service.PostService;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,13 @@ public class PostServiceImpl implements PostService{
 		this.postRepository = postRepository;
 	}
 	
+	@Override
+	public List<Post> getAllPostsByCategory(PostCategory postCategory) {
+	    Iterable<Post> posts = postRepository.getAllByPostcategory(postCategory);
+	    List<Post> postList = new ArrayList<>();
+	    posts.forEach(postList::add);
+	    return postList;
+	}
 	@Override
 	public Post getPostById(Long id) {
 		Optional<Post> postOptional = postRepository.findById(id);
@@ -36,8 +42,15 @@ public class PostServiceImpl implements PostService{
 
 	@Override
 	public Post getPostByTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+	    Optional<Post> postOptional = postRepository.findByTitle(title);
+	    Post existingPost;
+
+	    if (postOptional.isPresent()) {
+	        existingPost = postOptional.get();
+	        return existingPost;
+	    } else {
+	        throw new IllegalStateException("Post does not exist with title " + title);
+	    }
 	}
 
 	@Override

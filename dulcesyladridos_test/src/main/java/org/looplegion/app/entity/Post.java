@@ -32,7 +32,7 @@ public class Post {
 	@Column(name = "date",nullable = false,columnDefinition = "DATE")
 	private Date date;
 	
-	
+	public Post() {}
 	// Foreign key section
 	// ------------------------------------------------------
 	

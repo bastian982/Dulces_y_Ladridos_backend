@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.looplegion.app.entity.User;
 import org.looplegion.app.service.UserService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
