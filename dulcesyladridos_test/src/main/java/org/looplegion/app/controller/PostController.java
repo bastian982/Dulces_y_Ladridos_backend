@@ -15,6 +15,7 @@ public class PostController {
 
 	PostService postService;
 	
+	
 	public PostController(PostService postService) {
 		this.postService = postService;
 	}
